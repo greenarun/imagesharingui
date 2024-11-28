@@ -1,5 +1,5 @@
-import React,{useEffect, useState} from 'react'; 
-import { BrowserRouter as Router, Route, Routes,Navigate } from 'react-router-dom'; 
+import React,{ useState} from 'react'; 
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; 
 import ProtectedRoute from "./Components/ProtectedRoute";
 import Login from './Components/Login';
 import FileUpload from './Components/FileUpload';
