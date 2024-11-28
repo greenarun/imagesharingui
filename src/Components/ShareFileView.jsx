@@ -12,8 +12,8 @@ const SharedFileView = (props) => {
   console.log(BASE_URL)
 
   useEffect(() => {
-    axios.get(`${BASE_URL}/api/files/share/${id}`).then((response) => setFileData(response.data)).catch (err => setError("File not found or server error"))  
-  }, [id]);
+    // axios.get(`${BASE_URL}/api/files/share/${id}`).then((response) => setFileData(response.data)).catch (err => setError("File not found or server error"))  
+  }, []);
 
   
   return (
@@ -22,7 +22,7 @@ const SharedFileView = (props) => {
   <HeaderComp {...props} /> 
   <div className="max-w-6xl mx-auto bg-white p-6 rounded-lg shadow-lg mt-4">
   <h2 className="text-3xl font-bold mb-4">Shared Files</h2> 
-
+{console.log("id",id)}
   {error && <div>
     <span>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8 inline pr-2">
