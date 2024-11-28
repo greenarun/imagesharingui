@@ -1,30 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { jwtDecode } from "jwt-decode";
-import axios from "axios";
-
-const HeaderComp = (props) => {
-  const [username, setUsername] = useState("");
-  const BASE_URL = process.env.REACT_APP_BASE_URL
-
-  const logout = () => {
-    props.setIsAuthenticated(false);
-  };
+import { Link } from "react-router-dom"; 
  
 
-  useEffect(() => {  
-    let token = localStorage.getItem('token')  
-    const decodedToken = jwtDecode(token); // Decoding the JWT token   
-    let userid = {userId: decodedToken.user.id}
-    axios.post(`${BASE_URL}/api/auth/username`, userid,
-        { headers: { 
-          'Authorization': `Bearer ${token}`,
-        },
-  }).then((response) => setUsername(response.data))
-        .catch((error) => console.error(error));   
-  },[BASE_URL])
-
-
+const HeaderComp = (props) => {
+ 
   return (
     <header>
       <nav className="flex-no-wrap relative flex w-full items-center justify-between bg-white py-2 shadow-md shadow-black/5 dark:bg-neutral-600 dark:shadow-black/10 lg:flex-wrap lg:justify-start lg:py-4">

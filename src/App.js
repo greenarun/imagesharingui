@@ -11,8 +11,7 @@ import NotAccess from './Components/NotAccess'
  
 
 const App = () => {   
-  const [isAuthenticated, setIsAuthenticated] = useState(false);  
-  // console.log("=====>", process.env.REACT_APP_BASE_URL)
+  const [isAuthenticated, setIsAuthenticated] = useState(false);   
 return (  
 <Router>
 <Routes>    

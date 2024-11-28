@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import HeaderComp from "./Header";
-// import NotAccess from './NotAccess'
+import NotAccess from './NotAccess'
 import axios from "axios";
 
 const SharedFileView = (props) => {
@@ -20,6 +20,7 @@ const SharedFileView = (props) => {
   
   return (
     <>
+    { console.log("~~___~~~~~>",id,token,error)}
     {(!error || token!=='') ?
 <>
   <HeaderComp {...props} /> 
