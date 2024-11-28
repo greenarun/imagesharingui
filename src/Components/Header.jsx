@@ -8,11 +8,12 @@ const HeaderComp = (props) => {
   const BASE_URL = process.env.REACT_APP_BASE_URL
   const history = useNavigate()
 
-  const logout = () => {
-    props.setIsAuthenticated(false);
-    localStorage.setItem('token','')
-    history('/logout', { replace: true })
-  };
+  // const logout = () => { 
+  //   localStorage.setItem('token','')
+  //   props.setIsAuthenticated(false);
+  //   history('/logout', { replace: true })
+    
+  // };
  
 
   useEffect(() => {  
@@ -104,13 +105,11 @@ const HeaderComp = (props) => {
           </div>
 
           <div className="relative flex items-center">
-           
-
-            <span
-              className="cursor-pointer mr-4 text-neutral-500 hover:text-neutral-700 focus:text-neutral-700 disabled:text-black/30 dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 [&.active]:text-black/90 dark:[&.active]:text-neutral-400"
- 
-              onClick={logout}
-            >
+          <span className="mr-4 text-neutral-500 hover:text-neutral-700 focus:text-neutral-700 disabled:text-black/30 dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 [&.active]:text-black/90 dark:[&.active]:text-neutral-400"
+              >{username.username}</span>
+              
+          <Link to="/logout" title="logout" className="cursor-pointer mr-4 text-neutral-500 hover:text-neutral-700 focus:text-neutral-700 disabled:text-black/30 dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 [&.active]:text-black/90 dark:[&.active]:text-neutral-400">
+            <span>
               <span className="[&>svg]:w-5">
              
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
@@ -120,9 +119,9 @@ const HeaderComp = (props) => {
               </span>
               
             </span>
-
-            <span className="mr-4 text-neutral-500 hover:text-neutral-700 focus:text-neutral-700 disabled:text-black/30 dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 [&.active]:text-black/90 dark:[&.active]:text-neutral-400"
-              >{username.username}</span>
+            
+            </Link>
+           
               
           </div>
         </div>

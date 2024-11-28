@@ -1,9 +1,20 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';  // For redirecting after login 
-import HeaderComp from './Header';
+import { Link,useNavigate } from 'react-router-dom';  // For redirecting after login 
+import HeaderComp from './HeaderNotLogged';
+import { useEffect } from 'react';
 
 const NotFound = (props) => { 
+const history = useNavigate()
+
+useEffect(() => {
+  localStorage.setItem('token','')
+  props.setIsAuthenticated(false);
+setTimeout(() => {
+  history('/', { replace: true })
+},2000)
+  },[])
+
   return (
     <div>
 <HeaderComp noprops={true}/>
