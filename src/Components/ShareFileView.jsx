@@ -7,7 +7,8 @@ const SharedFileView = (props) => {
   const { id } = useParams(); 
   const [fileData, setFileData] = useState(null);
   const [error, setError] = useState("");
-  const BASE_URL = process.env.REACT_APP_BASE_URL
+  const BASE_URL = process.env.REACT_APP_BASE_URL || 'https://imagesharingbackend-bac1.onrender.com'
+  console.log(BASE_URL)
 
   useEffect(() => {
     axios.get(`${BASE_URL}/api/files/share/${id}`).then((response) => setFileData(response.data)).catch (err => setError("File not found or server error"))  
