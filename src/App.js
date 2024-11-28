@@ -6,6 +6,7 @@ import FileUpload from './Components/FileUpload';
 import Dashboard from './Components/Dashboard';
 import Register from './Components/Register';  
 import SharedFileView from './Components/ShareFileView'; 
+import NotFound from './Components/NotFound'
  
 
 const App = () => {   
@@ -24,6 +25,7 @@ return (
 
 <Route path="/register" element={<Register />} /> 
 <Route path="/share/:id" element={<SharedFileView setIsAuthenticated={setIsAuthenticated} />} />
+<Route path="*" element={<NotFound setIsAuthenticated={setIsAuthenticated} />} />
 </Routes>
 </Router>  
   );
