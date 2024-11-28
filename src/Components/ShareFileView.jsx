@@ -4,15 +4,16 @@ import HeaderComp from "./Header";
 import axios from "axios";
 
 const SharedFileView = (props) => {
-  const { id } = useParams(); // File ID from URL
+  const { id } = useParams(); 
   const [fileData, setFileData] = useState(null);
   const [error, setError] = useState("");
+  const BASE_URL = process.env.REACT_APP_BASE_URL
 
   useEffect(() => {
     const fetchFile = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5002/api/files/share/${id}`
+          `${BASE_URL}/api/files/share/${id}`
         );
         setFileData(response.data);
       } catch (err) {
@@ -21,7 +22,7 @@ const SharedFileView = (props) => {
     };
 
     fetchFile();
-  }, [id]);
+  }, [id,BASE_URL]);
 
   if (error) {
     return <div>{error}</div>;
@@ -36,15 +37,15 @@ const SharedFileView = (props) => {
   <h2 className="text-3xl font-bold mb-4">Shared Files</h2> 
     <div>
       {fileData ? (
-        <div className="bg-slate-200 border-8 mb-4 pb-12">
+        <div className="bg-slate-200 border-8 pb-1">
           <div></div>
           <img
-            src={`http://localhost:5002${fileData.fileUrl.split('undefined')[1]}`}
+            src={`${BASE_URL}${fileData.fileUrl.split('undefined')[1]}`}
             alt={fileData.filename}
             className="object-cover"
           />
           <div className="flex"> 
-                <div className="flex text-indigo-700 mr-4">
+                <div className="flex text-indigo-700 mr-4 mt-4">
                   <span>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -66,7 +67,7 @@ const SharedFileView = (props) => {
                       />
                     </svg>
                   </span>
-                  <span>{fileData.views}</span> 
+                  <span className="ml-2">{fileData.views}</span> 
                 </div></div>
         </div>
       ) : (

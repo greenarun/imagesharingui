@@ -5,25 +5,24 @@ import axios from "axios";
 
 const HeaderComp = (props) => {
   const [username, setUsername] = useState("");
+  const BASE_URL = process.env.REACT_APP_BASE_URL
+
   const logout = () => {
     props.setIsAuthenticated(false);
   };
-
  
 
   useEffect(() => {  
     let token = localStorage.getItem('token')  
-    const decodedToken = jwtDecode(token); // Decoding the JWT token  
-    console.log(decodedToken.user.id)
-    
+    const decodedToken = jwtDecode(token); // Decoding the JWT token   
     let userid = {userId: decodedToken.user.id}
-    axios.post('http://localhost:5002/api/auth/username', userid,
+    axios.post(`${BASE_URL}/api/auth/username`, userid,
         { headers: { 
           'Authorization': `Bearer ${token}`,
         },
   }).then((response) => setUsername(response.data))
         .catch((error) => console.error(error));   
-  },[])
+  },[BASE_URL])
 
 
   return (
@@ -54,9 +53,9 @@ const HeaderComp = (props) => {
             className="!visible hidden flex-grow basis-[100%] items-center lg:!flex lg:basis-auto"
             id="navbarSupportedContent1"
           >
-            <a
+            <span
               className="mb-4 mr-2 mt-3 flex items-center text-neutral-900 hover:text-neutral-900 focus:text-neutral-900 dark:text-neutral-200 dark:hover:text-neutral-400 dark:focus:text-neutral-400 lg:mb-0 lg:mt-0"
-              href="#"
+         
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -70,7 +69,7 @@ const HeaderComp = (props) => {
                   clipRule="evenodd"
                 />
               </svg>
-            </a>
+            </span>
 
             <ul className="list-style-none mr-auto flex flex-col pl-0 lg:flex-row">
               <li className="mb-4 lg:mb-0 lg:pr-2">
@@ -103,9 +102,9 @@ const HeaderComp = (props) => {
           <div className="relative flex items-center">
            
 
-            <a
+            <span
               className="mr-4 text-neutral-500 hover:text-neutral-700 focus:text-neutral-700 disabled:text-black/30 dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 [&.active]:text-black/90 dark:[&.active]:text-neutral-400"
-              href="#"
+ 
               onClick={logout}
             >
               <span className="[&>svg]:w-5">
@@ -113,12 +112,10 @@ const HeaderComp = (props) => {
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15" />
 </svg>
-
-                
-                {console.log(username)}
+ 
               </span>
               
-            </a>
+            </span>
 
             <span className="mr-4 text-neutral-500 hover:text-neutral-700 focus:text-neutral-700 disabled:text-black/30 dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 [&.active]:text-black/90 dark:[&.active]:text-neutral-400"
               >{username.username}</span>

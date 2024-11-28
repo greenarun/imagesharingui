@@ -1,41 +1,39 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-// import { useNavigate } from 'react-router-dom';  // For redirecting after login
+import axios from "axios"; 
 import HeaderComp from "./Header";
  
 
 const Dashboard = (props) => {
-  const [data, setData] = useState();
-  const [show,setShow] = useState(false)
- 
+  const [data, setData] = useState(); 
+ const BASE_URL = process.env.REACT_APP_BASE_URL
+ const GET_PATH = window.location.href.replace(/dashboard/g, '')
+ console.log(GET_PATH)
 
   useEffect(() => {
     let token = localStorage.getItem("token");
  
     axios
-      .post("http://localhost:5002/api/files/getfiles", "", {
+      .post(`${BASE_URL}/api/files/getfiles`, "", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       })
       .then((response) => setData(response))
       .catch((error) => console.error(error));
-  }, []);
+  }, [BASE_URL]);
 
   const handleCopyClick = (text) => {
     try {
       window.navigator.clipboard.writeText(text);
       alert("Copied to clipboard!");
-      setShow(false)
+   
     } catch (err) {
       console.error("Unable to copy to clipboard.", err);
       alert("Copy to clipboard failed.");
     }
   };
 
-  const handleShare = () => {
-    setShow(true)
-  }
+ 
 
   return (
     <>
@@ -46,10 +44,10 @@ const Dashboard = (props) => {
         <ul>
           {data?.data?.length !== 0 &&
             data?.data?.files?.map((list) => (
-              <li className="bg-slate-200 border-8 mb-4 pb-3">
+              <li className="bg-slate-200 border-8 mb-4 pb-3" key={list._id}>
                  
                 <img
-                  src={`http://localhost:5002/${list.path}`}
+                  src={`${BASE_URL}/${list.path}`}
                   alt={list.filename}
                   className="object-cover"
                 />
@@ -79,7 +77,7 @@ const Dashboard = (props) => {
                   <span>{list.views}</span> 
                 </div>
                 <div  className="flex  cursor-pointer text-indigo-700  mr-4">
-                  <span onClick={() => handleCopyClick(`http://localhost:3000/share/${list._id}`)}> 
+                  <span onClick={() => handleCopyClick(`${GET_PATH}share/${list._id}`)}> 
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"

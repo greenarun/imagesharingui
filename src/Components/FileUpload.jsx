@@ -9,6 +9,7 @@ const FileUpload = (props) => {
   const [preview, setPreview] = useState(null);
   const [message, setMessage] = useState('');
   const [uploading, setUploading] = useState(false); 
+  const BASE_URL = process.env.REACT_APP_BASE_URL
 
   // Handle file input change
   const handleFileChange = (e) => {
@@ -47,7 +48,7 @@ const FileUpload = (props) => {
     setMessage('');
 
     try {
-      const response = await axios.post('http://localhost:5002/api/files/upload', formData, {
+      const response = await axios.post(`${BASE_URL}/api/files/upload`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           'Authorization': `Bearer ${token}`,
@@ -84,7 +85,7 @@ const FileUpload = (props) => {
   return (
     <>
   <HeaderComp {...props}/>  
-    <div className="max-w-md mx-auto bg-white p-6 rounded-lg shadow-lg mt-4">
+    <div className="max-w-md mx-auto bg-white p-6 rounded-lg shadow-lg mt-6">
       <h2 className="text-2xl font-bold mb-4 text-center">Upload an Image</h2>
 
     {message &&  <div class="flex items-center bg-blue-500 text-white text-sm font-bold px-4 py-3" role="alert">
