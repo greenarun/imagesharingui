@@ -9,6 +9,7 @@ const HeaderComp = (props) => {
 
   const logout = () => {
     props.setIsAuthenticated(false);
+    localStorage.setItem('token','')
   };
  
 

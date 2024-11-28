@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import HeaderComp from "./Header";
+// import NotAccess from './NotAccess'
 import axios from "axios";
 
 const SharedFileView = (props) => {
@@ -8,17 +9,18 @@ const SharedFileView = (props) => {
   const [fileData, setFileData] = useState(null);
   const [error, setError] = useState("");
   const BASE_URL = process.env.REACT_APP_BASE_URL
-
+  const token = localStorage.getItem('token')
   console.log(BASE_URL)
 
   useEffect(() => {
-    console.log(id)
-     axios.get(`${BASE_URL}/api/files/share/${id}`).then((response) => setFileData(response.data)).catch (err => setError("File not found or server error"))  
+    console.log("~~~~~~~>",id,token,error)
+     axios.get(`${BASE_URL}/api/files/share/${id}`).then((response) => setFileData(response.data)).catch (err => setError(`File not found or server error ! ${err}`))  
   }, []);
 
   
   return (
-
+    <>
+    {(!error || token!=='') ?
 <>
   <HeaderComp {...props} /> 
   <div className="max-w-6xl mx-auto bg-white p-6 rounded-lg shadow-lg mt-4">
@@ -70,10 +72,11 @@ const SharedFileView = (props) => {
         <p>{!error && <>Loading...</>}</p>
       )}
     </div>
-   
-    
-
     </div>
+</>
+
+:
+<>Error</>}
 </>
   );
 };
