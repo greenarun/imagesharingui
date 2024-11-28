@@ -8,6 +8,7 @@ import Register from './Components/Register';
 import SharedFileView from './Components/ShareFileView'; 
 import NotFound from './Components/NotFound'
 import NotAccess from './Components/NotAccess'
+import Logout from './Components/Logout'
  
 
 const App = () => {   
@@ -26,6 +27,7 @@ return (
 <Route path="register" element={<Register />} /> 
 <Route path="image/:id" element={localStorage.getItem('token') ? <SharedFileView  setIsAuthenticated={setIsAuthenticated} /> : <NotAccess />} />
 <Route path="*" element={<NotFound setIsAuthenticated={setIsAuthenticated} />} />
+<Route path="logout" element={<Logout setIsAuthenticated={setIsAuthenticated} />} />
 </Routes>
 </Router>  
   );

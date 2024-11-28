@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
 
 const HeaderComp = (props) => {
   const [username, setUsername] = useState("");
   const BASE_URL = process.env.REACT_APP_BASE_URL
+  const history = useNavigate()
 
   const logout = () => {
     props.setIsAuthenticated(false);
     localStorage.setItem('token','')
+    history('/logout', { replace: true })
   };
  
 
