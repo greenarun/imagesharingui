@@ -24,7 +24,7 @@ return (
 <Route path="/" element={<Login setIsAuthenticated={setIsAuthenticated} />} />
 
 <Route path="register" element={<Register />} /> 
-<Route path="image/:id" element={<SharedFileView  />} />
+<Route path="image/:id" element={<SharedFileView  />} exact />
 <Route path="*" element={<NotFound setIsAuthenticated={setIsAuthenticated} />} />
 </Routes>
 </Router>  
