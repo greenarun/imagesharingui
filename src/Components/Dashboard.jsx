@@ -32,9 +32,7 @@ const Dashboard = (props) => {
       alert("Copy to clipboard failed.");
     }
   };
-
  
-
   return (
     <>
       <HeaderComp {...props} />

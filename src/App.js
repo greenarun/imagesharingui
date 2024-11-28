@@ -11,7 +11,7 @@ import NotFound from './Components/NotFound'
 
 const App = () => {   
   const [isAuthenticated, setIsAuthenticated] = useState(false);  
-  console.log("=====>", process.env.REACT_APP_BASE_URL)
+  // console.log("=====>", process.env.REACT_APP_BASE_URL)
 return (  
 <Router>
 <Routes>    
@@ -24,7 +24,7 @@ return (
 <Route path="/" element={<Login setIsAuthenticated={setIsAuthenticated} />} />
 
 <Route path="register" element={<Register />} /> 
-<Route path="image/:id" element={<SharedFileView  />} exact />
+<Route path="image/:id" element={<SharedFileView  />} />
 <Route path="*" element={<NotFound setIsAuthenticated={setIsAuthenticated} />} />
 </Routes>
 </Router>  

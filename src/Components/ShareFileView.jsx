@@ -12,7 +12,8 @@ const SharedFileView = (props) => {
   console.log(BASE_URL)
 
   useEffect(() => {
-    // axios.get(`${BASE_URL}/api/files/share/${id}`).then((response) => setFileData(response.data)).catch (err => setError("File not found or server error"))  
+    console.log(id)
+     axios.get(`${BASE_URL}/api/files/share/${id}`).then((response) => setFileData(response.data)).catch (err => setError("File not found or server error"))  
   }, []);
 
   
