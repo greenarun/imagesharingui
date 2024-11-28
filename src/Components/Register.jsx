@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';  // For redirecting after login 
+import HeaderComp from './HeaderNotLogged';
 import axios from 'axios'; 
 
 const Register = () => {
@@ -41,18 +42,22 @@ const Register = () => {
        axios.post(`${BASE_URL}/api/auth/register`, { username, email, password })
        .then(() => {
         setMessage('Registration successful!')
-        history('/', { replace: true })
+        setTimeout(()=> {
+          history('/', { replace: true })
+        },1500)
+        
       })
       .catch ((err) => {
         setMessage(err.response ? err.response.data?.message : "invalid form data")
         console.error(err.response ? err.response.data : err.message)
-      }) 
+      }).finally(setLoading(false))
     } 
 
     console.log(loading)
 
   return (
     <div> 
+      <HeaderComp />
       <div className="max-w-sm mx-auto bg-white p-6 rounded-lg shadow-lg mt-6">
       <h2 className="text-2xl font-bold mb-6 text-center">Register</h2>
       {message &&  <div class="flex items-center bg-blue-500 text-white text-sm font-bold px-4 py-3" role="alert">
@@ -94,9 +99,10 @@ const Register = () => {
         </div>
         <button
           type="submit"
-          className="w-full py-2 bg-green-600 text-white rounded-md hover:bg-green-700"
+          className="w-full py-2 bg-green-600 text-white rounded-md hover:bg-green-700 cursor-pointer"
+          disabled={loading ? true :false}
         >
-          Register
+         {loading ? 'Loading' : 'Register'}
         </button>
       </form>
     </div> 

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate,Link } from 'react-router-dom';  // For redirecting after login 
+import HeaderComp from './HeaderNotLogged';
 
 const Login = (props) => {
   const [email, setEmail] = useState('');
@@ -53,7 +54,7 @@ const Login = (props) => {
 
   return (
     <div>
-
+<HeaderComp />
 <div className="max-w-sm mx-auto bg-white p-6 rounded-lg shadow-lg mt-6">
       <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
       {message &&  <div class="flex items-center bg-blue-500 text-white text-sm font-bold px-4 py-3" role="alert">

@@ -61,6 +61,9 @@ const FileUpload = (props) => {
       console.error(err.response ? err.response.data : err.message);
     } finally {
       setUploading(false);
+      setFile(null)
+      setTags('')
+      setPreview(null)
     }
   };
 

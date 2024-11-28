@@ -72,24 +72,29 @@ const HeaderComp = (props) => {
               Image Sharing
             </span>
 
-            <ul className="list-style-none mr-auto flex flex-col pl-0 lg:flex-row">
+            
+          </div>
+
+          <div className="relative flex items-center">
+           
+          <ul className="list-style-none mr-auto flex flex-col pl-0 lg:flex-row">
               <li className="mb-4 lg:mb-0 lg:pr-2">
                 <Link
                   className="text-neutral-500 hover:text-neutral-700 focus:text-neutral-700 disabled:text-black/30 dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-zinc-400"
-                  to="/dashboard"
+                  to="/register"
                   data-te-nav-link-ref
                 >
-                  Dashboard
+                  Register
                 </Link>
               </li>
 
               <li className="mb-4 lg:mb-0 lg:pr-2">
                 <Link
                   className="text-neutral-500 hover:text-neutral-700 focus:text-neutral-700 disabled:text-black/30 dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-neutral-400"
-                  to="/upload"
+                  to="/"
                   data-te-nav-link-ref
                 >
-                  Upload
+                  Login
                 </Link>
               </li>
 
@@ -98,28 +103,6 @@ const HeaderComp = (props) => {
                href="#" data-te-nav-link-ref>Login</a>
           </li> */}
             </ul>
-          </div>
-
-          <div className="relative flex items-center">
-           
-
-            <span
-              className="cursor-pointer mr-4 text-neutral-500 hover:text-neutral-700 focus:text-neutral-700 disabled:text-black/30 dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 [&.active]:text-black/90 dark:[&.active]:text-neutral-400"
- 
-              onClick={logout}
-            >
-              <span className="[&>svg]:w-5">
-             
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15" />
-</svg>
- 
-              </span>
-              
-            </span>
-
-            <span className="mr-4 text-neutral-500 hover:text-neutral-700 focus:text-neutral-700 disabled:text-black/30 dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 [&.active]:text-black/90 dark:[&.active]:text-neutral-400"
-              >{username.username}</span>
               
           </div>
         </div>
