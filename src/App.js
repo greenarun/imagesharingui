@@ -23,8 +23,8 @@ return (
 {/* Public routes */}
 <Route path="/" element={<Login setIsAuthenticated={setIsAuthenticated} />} />
 
-<Route path="/register" element={<Register />} /> 
-<Route path="/image/:id" element={<SharedFileView setIsAuthenticated={setIsAuthenticated} />} />
+<Route path="register" element={<Register />} /> 
+<Route path="image/:id" element={<SharedFileView  />} />
 <Route path="*" element={<NotFound setIsAuthenticated={setIsAuthenticated} />} />
 </Routes>
 </Router>  

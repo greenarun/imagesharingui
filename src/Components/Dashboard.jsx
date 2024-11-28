@@ -77,7 +77,7 @@ const Dashboard = (props) => {
                   <span className="pl-1">{list.views}</span> 
                 </div>
                 <div  className="flex  cursor-pointer text-indigo-700  mr-4">
-                  <span onClick={() => handleCopyClick(`${GET_PATH}share/${list._id}`)}> 
+                  <span onClick={() => handleCopyClick(`${GET_PATH}image/${list._id}`)}> 
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
